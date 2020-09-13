@@ -7,9 +7,37 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <canvas id="myCanvas" width="500" height="500"></canvas> <br>
-    <input type="color" id="color" onInput="definirColor(this.value);"> 
-    <input type="range" id="grosor" onInput="definirGrosor(this.value);" min="1" max="5" value="1"> 
+    <div id="tools" class="containet">
+        <div id="tools-images" style="position:relative;text-align: center; display: block;margin: 0 auto;">
+            <img  id="goma" src="images/goma.png"  style="width:40px;"alt="">
+            <img  id="tacho" src="images/tacho.png"  onClick="eliminar();" style="width:40px;"alt="">
+            <img  id="descargar" src="images/guardar.png" style="width:40px;"alt="">
+            <input type="file"  id="cargar"> 
+        
+          
+                <div >
+                 <button  id="buttonSepia" >filtro sepia </button>
+                 <button  id="buttonBinary" >filtro blanco y negro </button>
+                 <button  id="buttonNegative" >filtro negativo </button>
+                    <input type="color" id="color" onInput="definirColor(this.value);"> 
+               
+                    <label for="cars">Elija un filtro:</label>
+                    <select id="filtros" name="filtros">
+                      <option id="buttonSepia" value="buttonSepia">Filtro Sepia</option>
+                      <option id="buttonBinary" value="buttonBinary">Filtro Binario</option>
+                      <option id="buttonNegative" value="buttonNegative">Filtro Negativo</option>
+                     
+                    </select>
+                    <input type="range" id="grosor" onInput="definirGrosor(this.value);" min="1" max="20" value="1"> 
+                </div>
+             
+           
+        </div>
+
+  
+
+    <canvas id="myCanvas" width="800" height="500"></canvas> <br>
+   
     <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
