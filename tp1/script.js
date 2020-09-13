@@ -71,13 +71,13 @@ function BorrarConGoma(){
     herramientas(borrando);
   }
 
-  function Pintar(){ 
-    let ctx=document.querySelector("#myCanvas").getContext("2d");
-    let colour="red";
-    ctx.fillStyle=definirColor(colour);
+  //function Pintar(){ 
+   // let ctx=document.querySelector("#myCanvas").getContext("2d");
+    //let colour="red";
+    //ctx.fillStyle=definirColor(colour);
    // ctx.fillRect(0,0,500,500);
-    ctx.fill();
-  }
+    //ctx.fill();
+  //}
     //function clearCanvas(){
     //this.ctx.clearRect(0, 0, canvas.width, canvas.height);
     //this.rellenarCanvas();
