@@ -9,7 +9,27 @@ body{
     background-color: grey;
 }
 label{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color: crimson;
-    color: white;
+    color:white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bolder;
+   
+}
+
+.filtros{
+    display: grid;
+    height: 60%;
+    float: left;
+    left:9px;
+    position: fixed;
+    margin-top: 6vh;
+}    
+.herramientas{
+  
+        display: grid;
+        height: 45%;
+        right:9px;
+        position: fixed;
+        margin-top: 6vh;
+        
+      
 }
