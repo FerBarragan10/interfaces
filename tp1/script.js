@@ -6,10 +6,10 @@ let canvas=document.querySelector('#myCanvas');
 let ctx=canvas.getContext('2d');
 let rect=canvas.getBoundingClientRect();
 let x=0, y=0, dibujando=false, color="black", colorBorrado="white", grosor=1;
-let ultimoestado = [];
+//let ultimoestado = [];
 ctx.beginPath();
 ctx.rect(0, 0, canvas.width, canvas.height);
-ctx.fillStyle = "rgba(255,255,255,0)";
+ctx.fillStyle = "rgba(255,255,255,1)";
 ctx.fill();
 let gomaActiva = false;
 let nombreImagen="Sin título.png";
@@ -48,15 +48,15 @@ canvas.addEventListener("mouseup",function(e){
    
 });
 
-function setEstadoCanvas(estado){
-  ctx.putImageData(estado, 0, 0);
-}
+//function setEstadoCanvas(estado){
+ // ctx.putImageData(estado, 0, 0);
+//}
 
-function deshacer(){
-  if (ultimoestado.length >0)
-    setEstadoCanvas(ultimoestado.pop());
+//function deshacer(){
+  //if (ultimoestado.length >0)
+   // setEstadoCanvas(ultimoestado.pop());
     
-}
+//}
 function dibujar(x1,y1,x2,y2){
     ctx.beginPath();
     ctx.strokeStyle=color;
