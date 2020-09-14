@@ -8,13 +8,19 @@
 </head>
 <body>
     <div id="tools" class="containet">
-        <div id="tools-images" style="position:relative;text-align: center; display: block;margin: 0 auto;">
+        <div class="deleteBack" id="tools-images" style="position:relative;text-align: center; display: block;margin: 0 auto;">
           
             <img  id="tacho" src="images/tacho.png"  title="Eliminar trabajo" onClick="eliminar();" style="width:40px;"alt="">
+           
+        </div>    
+            
+         <div class="upDown">    
             <img  id="descargar" src="images/guardar.png"  title="Descargar trabajo" style="width:40px;"alt="">
-            <input type="file"  id="cargar" title="seleccionar Imagen"> 
+                <label for="cargar">
+                    <img src="images/imagen.png" title="Subir imagen"  style="width:40px;"/>
+                </label>
+                <input id="cargar" class="image-upload"  type="file"/> 
         </div>
-          
                 <div class="herramientas">
                     <img  id="goma" src="images/goma.png" title="Goma de borrar"  style="width:40px;"alt="">
                  
