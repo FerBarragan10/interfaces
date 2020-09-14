@@ -21,27 +21,30 @@
                 <input id="cargar" class="image-upload"  type="file"/> 
         </div>
                 <div class="herramientas">
-                    <img  id="goma" src="images/goma.png" title="Goma de borrar"  style="width:40px;"alt="">
-                 
-                    <input type="color" id="color" title=" Selecciona color" onInput="definirColor(this.value);"> 
-                 
+                    <label class="labelBrillo" for="">Eliminar</label>
+                    <img  id="tacho" src="images/tacho.png" style="height: 40px;;position: relative;left:44px;" title="Eliminar trabajo" onClick="eliminar();" style="width:40px;"alt="">
+
+                    <label  class="labelBrillo" for="">Goma de borrar</label>
+                    <img  id="goma" src="images/goma.png" title="Goma de borrar"  style="position: relative;left: 44px;width:40px;"alt="">
+                    <label  class="labelBrillo" for="">Color</label>
+                    <input type="color" style="    left: 41px;position: relative;" id="color" title=" Selecciona color" onInput="definirColor(this.value);"> 
+                 <label class="labelBrillo" for="">Grosor</label>
                     <input type="range" id="grosor" title=" Selecciona Grosor"onInput="definirGrosor(this.value);" min="1" max="20" value="1"> 
 
-                    <img  id="tacho" src="images/tacho.png"  title="Eliminar trabajo" onClick="eliminar();" style="width:40px;"alt="">
 
                 </div>    
       
         <div class="filtros">
+            <label  class="labelFiltro" for="">Filtros:</label>
             <img src="images/byn.png" id="buttonBinary"  title="Filtro Binario" style="border-radius:50%;border:4px solid black;height:80px;"alt="">
             <img src="images/negativo.png"   id="buttonNegative" title="Filtro Negativo" style="border-radius:50%;border:4px solid black;height:80px;" alt="">
             <img src="images/sepia.png" id="buttonSepia" title="Filtro Sepia" style="border-radius:50%;border:4px solid black;height:80px;" alt="">     
         </div>
         <div class="brillo">
+            <label class="labelBrillo"for="">Brillo</label>
             <img src="images/menos.png" id="filtroDark" title="Menos Brillo" style="height:30px;" alt=""> 
             <img src="images/mas.png" id="filtroBrillo" title="Más Brillo" style="height:30px;" alt="">     
         </div>
-       
-  
 
     <canvas id="myCanvas" width="800" height="500"></canvas> 
    
