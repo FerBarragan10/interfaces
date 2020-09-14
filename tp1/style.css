@@ -15,6 +15,15 @@ label{
    
 }
 
+.menu{
+   
+    width: 40%;
+    
+    left:9px;
+    position: fixed;
+    margin-top: 6vh;
+}  
+
 .filtros{
     display: grid;
     height: 60%;
@@ -33,3 +42,8 @@ label{
         
       
 }
+.image-upload 
+{
+    display: none;
+}
+

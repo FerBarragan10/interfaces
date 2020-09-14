@@ -6,12 +6,13 @@ let canvas=document.querySelector('#myCanvas');
 let ctx=canvas.getContext('2d');
 let rect=canvas.getBoundingClientRect();
 let x=0, y=0, dibujando=false, color="black", colorBorrado="white", grosor=1;
+let ultimoestado = [];
 ctx.beginPath();
 ctx.rect(0, 0, canvas.width, canvas.height);
-ctx.fillStyle = "rgba(255,255,255,1)";
+ctx.fillStyle = "rgba(255,255,255,0)";
 ctx.fill();
 let gomaActiva = false;
-let nombreImagen="image.png";
+let nombreImagen="Sin título.png";
 let lapizActivo = false;
 
 function definirColor(colour){
@@ -46,6 +47,16 @@ canvas.addEventListener("mouseup",function(e){
     }
    
 });
+
+function setEstadoCanvas(estado){
+  ctx.putImageData(estado, 0, 0);
+}
+
+function deshacer(){
+  if (ultimoestado.length >0)
+    setEstadoCanvas(ultimoestado.pop());
+    
+}
 function dibujar(x1,y1,x2,y2){
     ctx.beginPath();
     ctx.strokeStyle=color;
@@ -55,6 +66,7 @@ function dibujar(x1,y1,x2,y2){
     ctx.lineTo(x2,y2);
     ctx.stroke();
     ctx.closePath();
+
 }
 function eliminar(){
     let canvas=document.querySelector('#myCanvas');
@@ -70,43 +82,6 @@ function BorrarConGoma(){
     definirColor("white");
     herramientas(borrando);
   }
-
-  //function Pintar(){ 
-   // let ctx=document.querySelector("#myCanvas").getContext("2d");
-    //let colour="red";
-    //ctx.fillStyle=definirColor(colour);
-   // ctx.fillRect(0,0,500,500);
-    //ctx.fill();
-  //}
-    //function clearCanvas(){
-    //this.ctx.clearRect(0, 0, canvas.width, canvas.height);
-    //this.rellenarCanvas();
-  //}
-
-  function subirImagen(e){
-  //  this.clearCanvas();
-    let reader = new FileReader();
-    let context = this.ctx;
-    reader.onload = function(event){
-        let img = new Image();
-        img.onload = function(){
-            let width = img.width;
-            let height = img.height;
-            while (width>canvas.width || height > canvas.height){
-              width = width/2;
-              height = height/2;
-            }
-            let posicionX = (canvas.width - width)/2;
-            let posicionY = (canvas.height - height)/2;
-            context.drawImage(img,posicionX,posicionY,width,height);
-        }
-        img.src = event.target.result;
-    }
-    //reader.readAsDataURL(e.target.files[0]);
-  }
-
-
-
   function getRed(imageData, x, y) {
     let index = (x + y * imageData.width) * 4;
     return imageData.data[index + 0];
@@ -134,6 +109,7 @@ function getSepia(){
     }
   }
   ctx.putImageData(imageData, 0, 0);
+ 
 } 
 
 function GetBlancoNegro(){
@@ -192,8 +168,7 @@ function getNegativo(){
       }
     }
   }
-  
-
+ 
   
   document.querySelector("#goma").addEventListener('click',BorrarConGoma);
 
@@ -217,7 +192,7 @@ function getNegativo(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     rellenarCanvas();
   }
-  document.getElementById('descargar').addEventListener('click', function(e){
+  document.querySelector('#descargar').addEventListener('click', function(e){
     descargarImagen(nombreImagen);
   });  
 
@@ -225,7 +200,7 @@ function getNegativo(){
   document.querySelector("#buttonSepia").addEventListener("click", getSepia);
   document.querySelector("#buttonNegative").addEventListener("click", getNegativo);
 
-  document.getElementById('cargar').addEventListener('change', function(e){
+  document.querySelector('#cargar').addEventListener('change', function(e){
     
         clearCanvas();
         let reader = new FileReader();
@@ -242,9 +217,12 @@ function getNegativo(){
                 let posicionX = (canvas.width - width)/2;
                 let posicionY = (canvas.height - height)/2;
                 context.drawImage(img,posicionX,posicionY,width,height);
+                //let imageData=ctx.getImageData(0,0,canvas.width,canvas.height);
+                //ultimoestado.push(imageData);
             }
             img.src = event.target.result;
+           
         }
         reader.readAsDataURL(e.target.files[0]);
-      
+     
   });
