@@ -1,12 +1,9 @@
-//var ctx=document.querySelector("#myCanvas").getContext("2d");
-//ctx.fillStyle="#FAC033";
-//ctx.fillRect(20,20,150,150);
 
+let rangeBrillo=document.querySelector("#brillo");
 let canvas=document.querySelector('#myCanvas');
 let ctx=canvas.getContext('2d');
 let rect=canvas.getBoundingClientRect();
 let x=0, y=0, dibujando=false, color="black", colorBorrado="white", grosor=1;
-//let ultimoestado = [];
 ctx.beginPath();
 ctx.rect(0, 0, canvas.width, canvas.height);
 ctx.fillStyle = "rgba(255,255,255,1)";
@@ -21,6 +18,7 @@ function definirColor(colour){
 function definirGrosor(gros){
     grosor=gros;
 }
+
 canvas.addEventListener("mousedown",function(e){
     x=e.clientX - rect.left;
     y=e.clientY - rect.top;
@@ -48,15 +46,6 @@ canvas.addEventListener("mouseup",function(e){
    
 });
 
-//function setEstadoCanvas(estado){
- // ctx.putImageData(estado, 0, 0);
-//}
-
-//function deshacer(){
-  //if (ultimoestado.length >0)
-   // setEstadoCanvas(ultimoestado.pop());
-    
-//}
 function dibujar(x1,y1,x2,y2){
     ctx.beginPath();
     ctx.strokeStyle=color;
@@ -126,6 +115,10 @@ function GetBlancoNegro(){
   }
   ctx.putImageData(imageData, 0, 0);
 }
+
+
+
+
 function getNegativo(){
   let imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
   let r,g,b;
@@ -139,6 +132,58 @@ function getNegativo(){
   }
   ctx.putImageData(imageData, 0, 0);
 }
+function getOtroEfecto(){
+  let imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+  let r,g,b;
+  for (let x=0; x<canvas.width; x++){
+    for (let y=0; y<canvas.height; y++){
+      adjustment+= getRed(imageData,x,y);
+      adjustment+=getGreen(imageData,x,y);
+      adjustment+=getBlue(imageData,x,y);
+      }
+      setPixel(imageData, x, y, r, g, b,255);
+    }
+  
+  ctx.putImageData(imageData, 0, 0);
+}
+
+function getFiltroBrillo() {
+  let index;
+  let imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+  for (let x = 0; x < imageData.width; x++) {
+          for (let y = 0; y < imageData.height; y++) {
+                  index = (x + y * imageData.width) * 4;
+                   r = imageData.data[index + 0] + 20;
+                   g = imageData.data[index + 1] + 20;
+                   b = imageData.data[index + 2] + 20;
+                  imageData.data[index + 0] = r;
+                  imageData.data[index + 1] = g;
+                  imageData.data[index + 2] = b;
+          }
+  }
+  ctx.putImageData(imageData, 0, 0);
+}
+function getFiltroOscurecer() {
+  let index;
+  let imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+  for (let x = 0; x < imageData.width; x++) {
+          for (let y = 0; y < imageData.height; y++) {
+                  index = (x + y * imageData.width) * 4;
+                   r = imageData.data[index + 0] - 20;
+                   g = imageData.data[index + 1] - 20;
+                   b = imageData.data[index + 2] - 20;
+                  imageData.data[index + 0] = r;
+                  imageData.data[index + 1] = g;
+                  imageData.data[index + 2] = b;
+          }
+  }
+  ctx.putImageData(imageData, 0, 0);
+}
+
+
+
+
+
   function descargarImagen(nombreImagen){
         //nombreImagen+=".png";
         let link = window.document.createElement( 'a' );
@@ -169,8 +214,7 @@ function getNegativo(){
     }
   }
  
-  
-  document.querySelector("#goma").addEventListener('click',BorrarConGoma);
+ 
 
   function setPixel(imageData, x, y, r, g, b, a) {
     let index = (x+y * imageData.width) * 4;
@@ -195,11 +239,12 @@ function getNegativo(){
   document.querySelector('#descargar').addEventListener('click', function(e){
     descargarImagen(nombreImagen);
   });  
-
+  document.querySelector("#goma").addEventListener('click',BorrarConGoma);
   document.querySelector("#buttonBinary").addEventListener("click", GetBlancoNegro);
   document.querySelector("#buttonSepia").addEventListener("click", getSepia);
   document.querySelector("#buttonNegative").addEventListener("click", getNegativo);
-
+  document.querySelector("#filtroBrillo").addEventListener("click", getFiltroBrillo);
+  document.querySelector("#filtroDark").addEventListener("click", getFiltroOscurecer);
   document.querySelector('#cargar').addEventListener('change', function(e){
     
         clearCanvas();

@@ -30,7 +30,15 @@ label{
     float: left;
     left:9px;
     position: fixed;
-    margin-top: 6vh;
+    margin-top: 6vh; 
+}
+.brillo{
+    display: block;
+    float: left;
+    left: 23px;
+    position: fixed;
+    margin-top: 64vh;
+   
 }    
 .herramientas{
   

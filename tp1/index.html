@@ -10,7 +10,6 @@
     <div id="tools" class="containet">
         <div class="deleteBack" id="tools-images" style="position:relative;text-align: center; display: block;margin: 0 auto;">
           
-            <img  id="tacho" src="images/tacho.png"  title="Eliminar trabajo" onClick="eliminar();" style="width:40px;"alt="">
            
         </div>    
             
@@ -27,6 +26,9 @@
                     <input type="color" id="color" title=" Selecciona color" onInput="definirColor(this.value);"> 
                  
                     <input type="range" id="grosor" title=" Selecciona Grosor"onInput="definirGrosor(this.value);" min="1" max="20" value="1"> 
+
+                    <img  id="tacho" src="images/tacho.png"  title="Eliminar trabajo" onClick="eliminar();" style="width:40px;"alt="">
+
                 </div>    
       
         <div class="filtros">
@@ -34,10 +36,14 @@
             <img src="images/negativo.png"   id="buttonNegative" title="Filtro Negativo" style="border-radius:50%;border:4px solid black;height:80px;" alt="">
             <img src="images/sepia.png" id="buttonSepia" title="Filtro Sepia" style="border-radius:50%;border:4px solid black;height:80px;" alt="">     
         </div>
+        <div class="brillo">
+            <img src="images/menos.png" id="filtroDark" title="Menos Brillo" style="height:30px;" alt=""> 
+            <img src="images/mas.png" id="filtroBrillo" title="Más Brillo" style="height:30px;" alt="">     
+        </div>
        
   
 
-    <canvas id="myCanvas" width="800" height="500"></canvas> <br>
+    <canvas id="myCanvas" width="800" height="500"></canvas> 
    
     <script type="text/javascript" src="script.js"></script>
 </body>
