@@ -226,7 +226,66 @@ function getFiltroSaturacion (){
     }
     ctx.putImageData(imageData, 0, 0);
   };
+  function getFiltroBlur() {
+    let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+    var radio = 1;
+  
+    let matriz = [];
+    let dimension = radio*2 + 1;
+    let vol = dimension*dimension;
+  
+    for (var i = 0; i < dimension; i++) {
+      matriz[i] = [];
+      for (var j = 0; j < dimension; j++) {
+        matriz[i][j] = 1/vol;
+      }
+    }
+  
+    let imgData = convolucion(imageData, matriz);
+    ctx.putImageData(imgData, 0, 0);
+}
+function convolucion(imagen, matriz) {
+  let width = imagen.width;
+  let height = imagen.height;
+  let imgRetorno = ctx.createImageData(width, height);
 
+  for (var y = 0; y < height; y++) {
+      for (var x = 0; x < width; x++) {
+          setRGB(imagen, width, height, matriz, imgRetorno, x, y)
+      }
+  }
+  return imgRetorno;
+};
+
+function setRGB(imagen, width, height, matriz, imgRetorno, x, y) {
+  let r = 0, g = 0, b = 0;
+  let dimension = matriz.length;
+  let radio = Math.floor(dimension/2);
+  for (var matrizY = 0; matrizY < dimension; matrizY++) {
+      for (var matrizX = 0; matrizX < dimension; matrizX++) {
+          var variables = getRGB(y, matrizY, x, matrizX, radio, imagen, width, height, matriz);
+          r += variables.r;
+          g += variables.g;
+          b += variables.b;
+      }
+  }
+  setPixel(imgRetorno, x, y, r, g, b, 255, width);
+}
+
+function getRGB(y, matrizY, x, matrizX, radio, imagen, width, height, matriz) {
+  let imageData = imagen.data;
+  let difY = y + matrizY - radio;
+  let difX = x + matrizX - radio;
+  let variables = {'r' : 0, 'g' : 0, 'b' : 0}
+  if (difY >= 0 && difY < height && difX >= 0 && difX < width) {
+      let index = (difY * width + difX)*4;
+      let valor = matriz[matrizY][matrizX];
+      variables.r = imageData[index] * valor;
+      variables.g = imageData[index+1] * valor;
+      variables.b = imageData[index+2] * valor;
+  }
+  return variables;
+}
 
 
   function descargarImagen(nombreImagen){
@@ -290,6 +349,7 @@ function getFiltroSaturacion (){
   document.querySelector("#buttonNegative").addEventListener("click", getNegativo);
   document.querySelector("#buttonSaturacion").addEventListener("click", getFiltroSaturacion);
   document.querySelector("#buttonBinario").addEventListener("click", getFiltroBinario); 
+  document.querySelector("#buttonBlur").addEventListener("click", getFiltroBlur); 
   document.querySelector("#filtroBrillo").addEventListener("click", getFiltroBrillo);
   document.querySelector("#filtroDark").addEventListener("click", getFiltroOscurecer);
   document.querySelector('#cargar').addEventListener('change', function(e){
