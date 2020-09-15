@@ -34,11 +34,11 @@ label{
 }
 .filtros2{
     display: grid;
-    height: 60%;
+    height: 35%;
     float: left;
     left: 112px;
     position: fixed;
-    margin-top: 12vh;
+    margin-top: 23vh;
 }
 
 .brillo{
