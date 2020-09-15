@@ -101,7 +101,7 @@ function getSepia(){
  
 } 
 
-function GetBlancoNegro(){
+function getGreyScale(){
   let imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
   let r,g,b;
   for (let x=0; x<canvas.width; x++){
@@ -180,7 +180,52 @@ function getFiltroOscurecer() {
   ctx.putImageData(imageData, 0, 0);
 }
 
+function getFiltroSaturacion (){
+  let imageData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
+  
+  let sv = 2; 
+  
+  let luR = 0.3086; 
+  let luG = 0.6094;
+  let luB = 0.0820;
+  
+  let az = (1 - sv)*luR + sv;
+  let bz = (1 - sv)*luG;
+  let cz = (1 - sv)*luB;
+  let dz = (1 - sv)*luR;
+  let ez = (1 - sv)*luG + sv;
+  let fz = (1 - sv)*luB;
+  let gz = (1 - sv)*luR;
+  let hz = (1 - sv)*luG;
+  let iz = (1 - sv)*luB + sv;
+  
+  let red ;
+  let green ;
+  let blue ;
+  for(var i = 0; i < imageData.data.length; i += 4) {
+  red =  imageData.data[i + 0];
+  green = imageData.data[i + 1];
+  blue = imageData.data[i + 2];
+  imageData.data[i + 0] = (az*red + bz*green + cz*blue);
+  imageData.data[i + 1]= (dz*red + ez*green + fz*blue);
+  imageData.data[i + 2] = (gz*red + hz*green + iz*blue);
+  }
+  
+  ctx.putImageData(imageData, 0, 0);
+  }
 
+   function getFiltroBinario() {
+    let imageData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
+    let resul=255/2;
+    for (var i=0; i<imageData.data.length; i+=4) {
+      let r = imageData.data[i];
+      let g = imageData.data[i+1];
+      let b = imageData.data[i+2];
+      let v = (0.2126*r + 0.7152*g + 0.0722*b >= resul) ? 255 : 0;
+      imageData.data[i] = imageData.data[i+1] = imageData.data[i+2] = v
+    }
+    ctx.putImageData(imageData, 0, 0);
+  };
 
 
 
@@ -240,9 +285,11 @@ function getFiltroOscurecer() {
     descargarImagen(nombreImagen);
   });  
   document.querySelector("#goma").addEventListener('click',BorrarConGoma);
-  document.querySelector("#buttonBinary").addEventListener("click", GetBlancoNegro);
+  document.querySelector("#buttonGreyScale").addEventListener("click", getGreyScale);
   document.querySelector("#buttonSepia").addEventListener("click", getSepia);
   document.querySelector("#buttonNegative").addEventListener("click", getNegativo);
+  document.querySelector("#buttonSaturacion").addEventListener("click", getFiltroSaturacion);
+  document.querySelector("#buttonBinario").addEventListener("click", getFiltroBinario); 
   document.querySelector("#filtroBrillo").addEventListener("click", getFiltroBrillo);
   document.querySelector("#filtroDark").addEventListener("click", getFiltroOscurecer);
   document.querySelector('#cargar').addEventListener('change', function(e){

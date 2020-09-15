@@ -32,6 +32,15 @@ label{
     position: fixed;
     margin-top: 6vh; 
 }
+.filtros2{
+    display: grid;
+    height: 60%;
+    float: left;
+    left: 112px;
+    position: fixed;
+    margin-top: 12vh;
+}
+
 .brillo{
     display: block;
     float: left;
