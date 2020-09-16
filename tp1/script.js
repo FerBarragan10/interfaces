@@ -1,5 +1,4 @@
 
-let rangeBrillo=document.querySelector("#brillo");
 let canvas=document.querySelector('#myCanvas');
 let ctx=canvas.getContext('2d');
 let rect=canvas.getBoundingClientRect();
@@ -64,7 +63,6 @@ function eliminar(){
 }
 
 function BorrarConGoma(){
-    document.body.style.cursor="url('images/goma.png')";
     let borrando = false;
     lapizActivo = false;
     gomaActiva = true;
@@ -132,20 +130,7 @@ function getNegativo(){
   }
   ctx.putImageData(imageData, 0, 0);
 }
-function getOtroEfecto(){
-  let imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
-  let r,g,b;
-  for (let x=0; x<canvas.width; x++){
-    for (let y=0; y<canvas.height; y++){
-      adjustment+= getRed(imageData,x,y);
-      adjustment+=getGreen(imageData,x,y);
-      adjustment+=getBlue(imageData,x,y);
-      }
-      setPixel(imageData, x, y, r, g, b,255);
-    }
-  
-  ctx.putImageData(imageData, 0, 0);
-}
+
 
 function getFiltroBrillo() {
   let index;
@@ -198,14 +183,10 @@ function getFiltroSaturacion (){
   let gz = (1 - sv)*luR;
   let hz = (1 - sv)*luG;
   let iz = (1 - sv)*luB + sv;
-  
-  let red ;
-  let green ;
-  let blue ;
   for(var i = 0; i < imageData.data.length; i += 4) {
-  red =  imageData.data[i + 0];
-  green = imageData.data[i + 1];
-  blue = imageData.data[i + 2];
+    let red =  imageData.data[i + 0];
+    let  green = imageData.data[i + 1];
+    let blue = imageData.data[i + 2];
   imageData.data[i + 0] = (az*red + bz*green + cz*blue);
   imageData.data[i + 1]= (dz*red + ez*green + fz*blue);
   imageData.data[i + 2] = (gz*red + hz*green + iz*blue);
@@ -340,6 +321,32 @@ function getRGB(y, matrizY, x, matrizX, radio, imagen, width, height, matriz) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     rellenarCanvas();
   }
+  document.querySelector('#cargar').addEventListener('change', function(e){
+    
+    clearCanvas();
+    let reader = new FileReader();
+    let context = ctx;
+    reader.onload = function(event){
+        let img = new Image();
+        img.onload = function(){
+            let width = img.width;
+            let height = img.height;
+            while (width>canvas.width || height > canvas.height){
+              width = width/2;
+              height = height/2;
+            }
+            let posicionX = (canvas.width - width)/2;
+            let posicionY = (canvas.height - height)/2;
+            context.drawImage(img,posicionX,posicionY,width,height);
+            //let imageData=ctx.getImageData(0,0,canvas.width,canvas.height);
+            //ultimoestado.push(imageData);
+        }
+        img.src = event.target.result;
+       
+    }
+    reader.readAsDataURL(e.target.files[0]);
+ 
+});
   document.querySelector('#descargar').addEventListener('click', function(e){
     descargarImagen(nombreImagen);
   });  
@@ -352,29 +359,4 @@ function getRGB(y, matrizY, x, matrizX, radio, imagen, width, height, matriz) {
   document.querySelector("#buttonBlur").addEventListener("click", getFiltroBlur); 
   document.querySelector("#filtroBrillo").addEventListener("click", getFiltroBrillo);
   document.querySelector("#filtroDark").addEventListener("click", getFiltroOscurecer);
-  document.querySelector('#cargar').addEventListener('change', function(e){
-    
-        clearCanvas();
-        let reader = new FileReader();
-        let context = ctx;
-        reader.onload = function(event){
-            let img = new Image();
-            img.onload = function(){
-                let width = img.width;
-                let height = img.height;
-                while (width>canvas.width || height > canvas.height){
-                  width = width/2;
-                  height = height/2;
-                }
-                let posicionX = (canvas.width - width)/2;
-                let posicionY = (canvas.height - height)/2;
-                context.drawImage(img,posicionX,posicionY,width,height);
-                //let imageData=ctx.getImageData(0,0,canvas.width,canvas.height);
-                //ultimoestado.push(imageData);
-            }
-            img.src = event.target.result;
-           
-        }
-        reader.readAsDataURL(e.target.files[0]);
-     
-  });
+  
