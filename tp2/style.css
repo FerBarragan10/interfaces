@@ -1,0 +1,66 @@
+body{
+    background-color:#d2cf76;
+}
+
+h1, h2{
+    font-family: 'Amethyst';
+}
+
+.header{
+    margin-top: 3px;
+}
+
+.header-page{
+    position: relative;
+    top: 3vh;
+}
+
+.header-acciones{
+    text-align: center;
+}
+
+
+
+.info{
+    margin-bottom: 0px;
+}
+
+#info-ganador, #info-empate{
+    width: 72%;
+    position:relative;
+    margin: auto;
+   
+}
+
+.mensaje-ganador{
+    height:50%;
+    text-align: center;
+    margin-top: 5px;
+}
+
+#tablero{
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+
+
+.oculto {
+    display: none;
+}
+
+.row-info{
+    position: relative;
+    top: 280px;
+    z-index: 9;
+}
+
+.jugadores{
+    background-color:#e6293f;
+    color:white;
+    height: 10vh;
+}
+.jugadores.turno-actual {
+    box-shadow: 4px 4px #dda4b7; 
+    color: rgb(214, 166, 166);
+}
