@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>4 en Linea</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/x-icon" href="images/icono.png" style="border-radius:50px;">
+
+    </head>
+    <body>
+        <div class="row header">
+            <div id="J1" class="jugadores offset-md-1 col-md-2 header-acciones">
+                <h2 id="nombreJ1">JUGADOR 1</h2>
+            </div>
+            <div class="header-acciones col-md-4 offset-md-1">
+                <div class="row">
+                  
+                </div>
+                <div class="row">
+                    <div class="col-md-12 header-page">
+                
+                        <img  id="iniciar-juego" src="images/play.png" title="comenzar/reiniciar"  style="position: relative;text-align: center;bottom:7px;"alt="">
+                    </div>
+                </div>
+            </div>
+            <div id="J2" class="jugadores offset-md-1 col-md-2 header-acciones alert alert-warning">
+                <h2 id="nombreJ2">JUGADOR 2</h2>
+            </div>
+        </div>
+
+        <div class="row-info">
+            <div  id="info-ganador" class="alert  mensaje-ganador alert-danger oculto offset-1 col-10" role="alert">
+
+               
+              </div>
+            <!--<div id="info-ganador" class="alert mensaje-ganador alert-success oculto offset-md-1 col-md-10">-->
+           
+            <div id="info-empate" class=" alert mensaje-ganador alert-danger oculto offset-md-1 col-md-10">
+               La partida finalizó en empate
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 offset-md-1">
+                <canvas id="tablero" class="bloqueado" width="1100" height="550"></canvas>
+            </div>
+        </div>
+    
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="Jugador.js"></script>
+        <script src="Ficha.js"></script>
+        <script src="Tablero.js"></script>
+        <script src="Juego.js"></script>
+        <script src="Main.js"></script>
+    </body>
+</html>
