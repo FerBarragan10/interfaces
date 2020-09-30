@@ -54,16 +54,16 @@ class Juego{
 
     marcarTurnoActual() {
         if (this.turno === 1){
-            document.getElementById('J1').classList.add('turno-actual');
-            document.getElementById('J2').classList.remove('turno-actual');
+            document.getElementById('J1').classList.add('turno');
+            document.getElementById('J2').classList.remove('turno');
         }
         else if(this.turno === 2) {
-            document.getElementById('J2').classList.add('turno-actual');
-            document.getElementById('J1').classList.remove('turno-actual');
+            document.getElementById('J2').classList.add('turno');
+            document.getElementById('J1').classList.remove('turno');
         }
         else{
-            document.getElementById('J1').classList.remove('turno-actual');
-            document.getElementById('J2').classList.remove('turno-actual');
+            document.getElementById('J1').classList.remove('turno');
+            document.getElementById('J2').classList.remove('turno');
         }
     }
 
@@ -104,9 +104,9 @@ class Juego{
             if (this.hayGanador()) {
                 var mensajeGanador = document.getElementById('info-ganador');
                 if(this.turno === 1)
-                    mensajeGanador.innerHTML = 'Ganó el JUGADOR 1';
+                    mensajeGanador.innerHTML = 'Ganó el Jugador 1!!!';
                 else
-                    mensajeGanador.innerHTML = 'Ganó el JUGADOR 2';
+                    mensajeGanador.innerHTML = 'Ganó el Jugador 2!!!';
                 mensajeGanador.classList.remove('oculto');
                 this.juegoFinalizado = true;
             }

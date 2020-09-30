@@ -2,8 +2,10 @@ body{
     background-color:#d2cf76;
 }
 
-h1, h2{
-    font-family: 'Amethyst';
+.canvas{
+    position: relative;
+    display: block;
+    margin: 0 auto;
 }
 
 .header{
@@ -18,7 +20,9 @@ h1, h2{
 .header-acciones{
     text-align: center;
 }
-
+h2{
+    padding:15px;
+}
 
 
 .info{
@@ -32,10 +36,22 @@ h1, h2{
    
 }
 
-.mensaje-ganador{
+
+
+
+.jugadorGanador{
+    font-size: 72px;
+    color:#e6293f;
     height:50%;
     text-align: center;
-    margin-top: 5px;
+    bottom:90vh;
+}
+.empate{
+    font-size: 72px;
+    color:#e6293f;
+    height:50%;
+    text-align: center;
+    margin-top: 5px; 
 }
 
 #tablero{
@@ -55,12 +71,13 @@ h1, h2{
     z-index: 9;
 }
 
-.jugadores{
+.jugador{
     background-color:#e6293f;
     color:white;
-    height: 10vh;
+    height: 12vh;
+    position: relative;
+    margin: auto;
 }
-.jugadores.turno-actual {
-    box-shadow: 4px 4px #dda4b7; 
-    color: rgb(214, 166, 166);
+.jugador.turno {
+    color: #ecd008;
 }
