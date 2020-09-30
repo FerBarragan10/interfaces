@@ -55,8 +55,8 @@ class Ficha{
     }
 
     isClicked(x, y) {
-        var xLayer = x - this.x;
-        var yLayer = y - this.y;
+        let xLayer = x - this.x;
+        let yLayer = y - this.y;
         return Math.sqrt(xLayer*xLayer + yLayer*yLayer) < this.radio;
     }
 

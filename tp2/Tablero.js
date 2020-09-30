@@ -10,9 +10,22 @@ class Tablero{
         this.direccionGanador = '';
         this.cuatroEnLinea = false;
         this.hayGanador = false;
+        this.jugador=0;
         this.inicioRanuraGanadora = {'x':0, 'y':0};
         this.finalRanuraGanadora = {'x':0, 'y':0};
         this.initRanuras();
+    }
+    dibujarTablero() {
+        this.ctx.fillStyle = "#d2cf76";
+        this.ctx.fillRect(0,0,1100,450);            
+        this.ctx.fillStyle="#ecd008";
+        this.ctx.fillRect(260,95,600,460);
+        for (let columna = 0; columna < this.ranurasX.length; columna++) {
+            for (let fila = 0; fila < this.ranurasY.length; fila++) {
+               let ficha = this.ranuras[this.ranurasY[fila]+'-fila'][this.ranurasX[columna]+'-columna'];
+                ficha.dibujar();
+            }   
+        }
     }
 
     initRanuras() {
@@ -34,20 +47,6 @@ class Tablero{
             fy += diferenciaY;           
         }
     }
-
-    dibujarTablero() {
-        this.ctx.fillStyle = "#d2cf76";
-        this.ctx.fillRect(0,0,1100,450);            
-        this.ctx.fillStyle="#ecd008";
-        this.ctx.fillRect(260,95,600,460);
-        for (let columna = 0; columna < this.ranurasX.length; columna++) {
-            for (let fila = 0; fila < this.ranurasY.length; fila++) {
-               let ficha = this.ranuras[this.ranurasY[fila]+'-fila'][this.ranurasX[columna]+'-columna'];
-                ficha.dibujar();
-            }   
-        }
-    }
-
     pudoInsertarFicha(x, y, fichaActual) {
         if (y < this.limiteY && x > 250 && x < 850)
             return this.buscarRanura(x, fichaActual);
@@ -85,7 +84,6 @@ class Tablero{
 
     comprobarVertical() {
         let contador = 0;
-        let jugador = -1;        
         for (let columna = 0; columna < this.columnas; columna++) {
             contador = 0;
             for (let fila = 0; fila < this.filas; fila++) {
@@ -93,10 +91,10 @@ class Tablero{
                 var valor = ficha.getJugador();
                 if (valor === 0) {
                     contador = 0;
-                    jugador = -1;
+                   
                 }
-                else if (valor !== jugador){
-                    jugador = valor;
+                else if (valor !== this.jugador){
+                    this.jugador = valor;
                     contador = 1;
                     this.inicioRanuraGanadora.x = columna;
                     this.inicioRanuraGanadora.y = fila;
@@ -113,14 +111,13 @@ class Tablero{
                 }                
             }
         }
-        this.finalRanuraGanadora.x = -1;
-        this.finalRanuraGanadora.y = -1;
+        this.finalRanuraGanadora.x = 0;
+        this.finalRanuraGanadora.y = 0;
         return this.hayGanador;
     }
 
     comprobarHorizontal() {
         let contador = 0;
-        let jugador = -1;       
         for (let fila = 0; fila < this.filas; fila++) {
             contador = 0;
             for (let columna = 0; columna < this.columnas; columna++) {
@@ -128,10 +125,9 @@ class Tablero{
                 let valor = ficha.getJugador();
                 if (valor === 0) {
                     contador = 0;
-                    jugador = -1;
                 }
-                else if (valor !== jugador){
-                    jugador = valor;
+                else if (valor !== this.jugador){
+                    this.jugador = valor;
                     contador = 1;
                     this.inicioRanuraGanadora.x = columna;
                     this.inicioRanuraGanadora.y = fila;
@@ -153,11 +149,7 @@ class Tablero{
         return this.hayGanador;
     }
 
-    comprobarDiagonal(){
-        if (this.comprobarDiagonalDerecha() || this.comprobarDiagonalIzquierda())
-            this.hayGanador = true;
-        return this.hayGanador;
-    }
+   
 
     comprobarDiagonalDerecha() {
         for (let fila = 3; fila < this.filas; fila++) {
@@ -222,8 +214,14 @@ class Tablero{
                 }
             }
         }
-        this.finalRanuraGanadora.x = -1;
-        this.finalRanuraGanadora.y = -1;
+        this.finalRanuraGanadora.x = 0;
+        this.finalRanuraGanadora.y = 0;
+        return this.hayGanador;
+    }
+
+    comprobarDiagonal(){
+        if (this.comprobarDiagonalDerecha() || this.comprobarDiagonalIzquierda())
+            this.hayGanador = true;
         return this.hayGanador;
     }
 }

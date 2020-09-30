@@ -18,7 +18,7 @@ class Juego{
     }
 
     dibujarFichasJugador(xTmpInit, cara, jugador) {
-        var tmpY = 200;
+        let tmpY = 200;
         for (var fila = 0; fila < 5; fila++) {
             let tmpX = xTmpInit;
             for(var columna = 0; columna < 4; columna++) {
