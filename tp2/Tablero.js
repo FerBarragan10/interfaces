@@ -10,19 +10,23 @@ class Tablero{
         this.inicioRanuraGanadora = {'x':-1, 'y':-1};
         this.finalRanuraGanadora = {'x':-1, 'y':-1};
         this.direccionGanador = '';
+        this.cuatroEnLinea = false;
+        this.hayGanador = false;
+
+
         this.initRanuras();
     }
 
     initRanuras() {
-        var diferenciaX = 95;
-        var diferenciaY = 65;
-        var fxInit = 320;
-        var fy = 130;
+        let diferenciaX = 95;
+        let diferenciaY = 65;
+        let fxInit = 320;
+        let fy = 130;
         for (let y = 0; y < this.filas; y++) {
-            var fx = fxInit;
+            let fx = fxInit;
             this.ranuras[fy+'-fila'] = [];
             for (let x = 0; x < this.columnas; x++) {
-                var ficha = new Ficha (fx, fy, 'ranuras', 0);
+                let ficha = new Ficha (fx, fy, 'ranuras', 0);
                 ficha.setContext(this.ctx);  
                 this.ranuras[fy+'-fila'][fx+'-columna'] = ficha;
                 this.ranurasX.push(fx);
@@ -40,7 +44,7 @@ class Tablero{
         this.ctx.fillRect(260,95,600,460);
         for (let columna = 0; columna < this.ranurasX.length; columna++) {
             for (let fila = 0; fila < this.ranurasY.length; fila++) {
-               var ficha = this.ranuras[this.ranurasY[fila]+'-fila'][this.ranurasX[columna]+'-columna'];
+               let ficha = this.ranuras[this.ranurasY[fila]+'-fila'][this.ranurasX[columna]+'-columna'];
                 ficha.dibujar();
             }   
         }
@@ -82,10 +86,8 @@ class Tablero{
     }
 
     comprobarVertical() {
-        var contador = 0;
-        var jugador = -1;
-        var hayGanador = false;
-        
+        let contador = 0;
+        let jugador = -1;        
         for (let columna = 0; columna < this.columnas; columna++) {
             contador = 0;
             for (let fila = 0; fila < this.filas; fila++) {
@@ -105,29 +107,27 @@ class Tablero{
                     contador++;
                 
                 if (contador === 4){                    
-                    hayGanador = true; 
+                    this.hayGanador = true; 
                     this.direccionGanador = 'vertical';
                     this.finalRanuraGanadora.x = columna;
                     this.finalRanuraGanadora.y = fila;                  
-                    return hayGanador;
+                    return this.hayGanador;
                 }                
             }
         }
         this.finalRanuraGanadora.x = -1;
         this.finalRanuraGanadora.y = -1;
-        return hayGanador;
+        return this.hayGanador;
     }
 
     comprobarHorizontal() {
-        var contador = 0;
-        var jugador = -1;
-        var hayGanador = false;
-        
-        for (let fila = 0; fila < 7; fila++) {
+        let contador = 0;
+        let jugador = -1;       
+        for (let fila = 0; fila < this.filas; fila++) {
             contador = 0;
             for (let columna = 0; columna < this.columnas; columna++) {
-                var ficha = this.ranuras[this.ranurasY[fila]+'-fila'][this.ranurasX[columna]+'-columna'];
-                var valor = ficha.getJugador();
+                let ficha = this.ranuras[this.ranurasY[fila]+'-fila'][this.ranurasX[columna]+'-columna'];
+                let valor = ficha.getJugador();
                 if (valor === 0) {
                     contador = 0;
                     jugador = -1;
@@ -142,48 +142,45 @@ class Tablero{
                     contador++;
                 
                 if (contador === 4){
-                    hayGanador = true;
+                    this.hayGanador = true;
                     this.direccionGanador = 'horizontal';
                     this.finalRanuraGanadora.x = columna;
                     this.finalRanuraGanadora.y = fila;
-                    return hayGanador;
+                    return this.hayGanador;
                 }
             }
         }
         this.finalRanuraGanadora.x = -1;
         this.finalRanuraGanadora.y = -1;
-        return hayGanador;
+        return this.hayGanador;
     }
 
     comprobarDiagonal(){
-        var hayGanador = false;
         if (this.comprobarDiagonalDerecha() || this.comprobarDiagonalIzquierda())
-            hayGanador = true;
-        return hayGanador;
+            this.hayGanador = true;
+        return this.hayGanador;
     }
 
     comprobarDiagonalDerecha() {
-        var hayGanador = false;
         for (let fila = 3; fila < this.filas; fila++) {
             for (let columna = 0; columna < 3; columna++) {
-                var valorTmpY = fila;
-                var valorTmpX = columna;
-                var valor = this.ranuras[this.ranurasY[valorTmpY]+'-fila'][this.ranurasX[valorTmpX]+'-columna'].getJugador();
-                var fourInLine = false;
+                let valorTmpY = fila;
+                let valorTmpX = columna;
+                let valor = this.ranuras[this.ranurasY[valorTmpY]+'-fila'][this.ranurasX[valorTmpX]+'-columna'].getJugador();
                 if (valor !== 0) {
-                    for (let i = 0; i < 3; i++) {
+                    for (let indice = 0; indice < 3; indice++) {
                         valorTmpY--;
                         valorTmpX++;
-                        var valorTmp = this.ranuras[this.ranurasY[valorTmpY]+'-fila'][this.ranurasX[valorTmpX]+'-columna'].getJugador();
+                        let valorTmp = this.ranuras[this.ranurasY[valorTmpY]+'-fila'][this.ranurasX[valorTmpX]+'-columna'].getJugador();
                         if (valor !== valorTmp)
-                            break;
-                        if (i === 2)
-                            fourInLine = true;
+                           break;    
+                        if (indice === 2)
+                           this.cuatroEnLinea = true;   
                     }
                 }
 
-                if (fourInLine){
-                    hayGanador = true;
+                if (this.cuatroEnLinea){
+                    this.hayGanador = true;
                     this.direccionGanador = 'diagonalDerecha';
                     this.inicioRanuraGanadora.x = columna;
                     this.inicioRanuraGanadora.y = fila;
@@ -195,31 +192,29 @@ class Tablero{
         }
         this.finalRanuraGanadora.x = -1;
         this.finalRanuraGanadora.y = -1;
-        return hayGanador;
+        return this.hayGanador;
     }
 
     comprobarDiagonalIzquierda() {
-        var hayGanador = false;
         for (let fila = 6; fila > 2; fila--) {
             for (let columna = 5; columna > 2; columna--) {
-                var valorTmpY = fila;
-                var valorTmpX = columna;
-                var valor = this.ranuras[this.ranurasY[valorTmpY]+'-fila'][this.ranurasX[valorTmpX]+'-columna'].getJugador();
-                var fourInLine = false;
+                let valorTmpY = fila;
+                let valorTmpX = columna;
+                let valor = this.ranuras[this.ranurasY[valorTmpY]+'-fila'][this.ranurasX[valorTmpX]+'-columna'].getJugador();
                 if (valor !== 0) {
-                    for (let i = 0; i < 3; i++) {
+                    for (let indice = 0; indice < 3; indice++) {
                         valorTmpY--;
                         valorTmpX--;
-                        var valorTmp = this.ranuras[this.ranurasY[valorTmpY]+'-fila'][this.ranurasX[valorTmpX]+'-columna'].getJugador();
+                        let valorTmp = this.ranuras[this.ranurasY[valorTmpY]+'-fila'][this.ranurasX[valorTmpX]+'-columna'].getJugador();
                         if (valor !== valorTmp)
                             break;
-                        if (i === 2)
-                            fourInLine = true;
+                        if (indice === 2)
+                        this.cuatroEnLinea = true;
                     }
                 }
 
-                if (fourInLine){
-                    hayGanador = true;
+                if (this.cuatroEnLinea){
+                    this.hayGanador = true;
                     this.direccionGanador = 'diagonalIzquierda';
                     this.inicioRanuraGanadora.x = columna;
                     this.inicioRanuraGanadora.y = fila;
@@ -231,6 +226,6 @@ class Tablero{
         }
         this.finalRanuraGanadora.x = -1;
         this.finalRanuraGanadora.y = -1;
-        return hayGanador;
+        return this.hayGanador;
     }
 }
