@@ -1,21 +1,22 @@
 class Ficha{
-    constructor(x, y, color, jugador){
+    constructor(x, y, cara, jugador){
         this.x = x;
         this.y = y;
-        this.radio = 25;
+        this.radio = 28;
         this.jugador = jugador;
         this.estado = '';
         this.imagen = new Image();
-        this.getSrc(color)
+        this.getSrc(cara)
     }
 
-    getSrc(color) {
-        if(color === 'j1')
-            this.imagen.src = 'images/Fichaj1.png';
-        else if (color === 'j2')
-            this.imagen.src = 'images/Fichaj2.png';
-        else if (color === 'ranuras')
+    getSrc(cara) {
+         if (cara === 'ranuras')
             this.imagen.src = 'images/FichaVacia.png';
+        else if(cara === 'jugador1')
+            this.imagen.src = 'images/Fichaj1.png';
+        else if (cara === 'jugador2')
+            this.imagen.src = 'images/Fichaj2.png';
+        
     }
 
     getJugador(){
@@ -45,8 +46,8 @@ class Ficha{
         this.y = y;
     }
 
-    setColor(color){
-        this.color = color;
+    setColor(cara){
+        this.cara = cara;
     }
 
     setEstado(estado) {

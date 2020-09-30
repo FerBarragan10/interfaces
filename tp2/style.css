@@ -77,6 +77,7 @@ h2{
     height: 12vh;
     position: relative;
     margin: auto;
+    border-radius:20px;
 }
 .jugador.turno {
     color: #ecd008;

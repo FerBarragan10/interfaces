@@ -3,31 +3,26 @@ class Juego{
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.tablero = new Tablero(this.ctx);
-        this.j1 = new Jugador (this.ctx, 'Jugador 1', 1);
-        this.j2 = new Jugador (this.ctx, 'Jugador 2', 2);
         this.fichas = [];
         this.turno = 1;
         this.fichaActual = null;
         this.posInicialX;
         this.posInicialY;
-        this.fichaClickeada = false;
-        this.juegoFinalizado = false;
-        this.cantidadFichas = 42;
-        this.drawFichasInit();
-        this.initJuego();
+        this.jugador1 = new Jugador (this.ctx, 'Jugador 1', 1);
+        this.jugador2 = new Jugador (this.ctx, 'Jugador 2', 2);
+        this.cantidadFichas = 44;
+        this.isFichaClickeada = false;
+        this.isJuegoFinalizado = false;
+        this.dibujarFichas();
+        this.iniciarJuego();
     }
 
-    drawFichasInit(){
-        this.drawFichasJugador(50, 'j1', this.j1);
-        this.drawFichasJugador(920, 'j2', this.j2);
-    }
-
-    drawFichasJugador(xTmpInit, color, jugador) {
+    dibujarFichasJugador(xTmpInit, cara, jugador) {
         var tmpY = 200;
         for (var fila = 0; fila < 5; fila++) {
-            var tmpX = xTmpInit;
+            let tmpX = xTmpInit;
             for(var columna = 0; columna < 4; columna++) {
-                var ficha = new Ficha (tmpX, tmpY, color, jugador);
+                let ficha = new Ficha (tmpX, tmpY, cara, jugador);
                 ficha.setContext(this.ctx);
                 this.fichas.push(ficha);
                 tmpX += 40;
@@ -35,8 +30,14 @@ class Juego{
             tmpY += 40;
         } 
     }
+    dibujarFichas(){
+        this.dibujarFichasJugador(80, 'jugador1', this.jugador1);
+        this.dibujarFichasJugador(925, 'jugador2', this.jugador2);
+    }
 
-    initJuego() {
+    
+
+    iniciarJuego() {
         this.tablero.dibujarTablero();       
     }
 
@@ -54,25 +55,25 @@ class Juego{
 
     marcarTurnoActual() {
         if (this.turno === 1){
-            document.getElementById('J1').classList.add('turno');
-            document.getElementById('J2').classList.remove('turno');
+            document.querySelector('#jugador1').classList.add('turno');
+            document.querySelector('#jugador2').classList.remove('turno');
         }
         else if(this.turno === 2) {
-            document.getElementById('J2').classList.add('turno');
-            document.getElementById('J1').classList.remove('turno');
+            document.querySelector('#jugador2').classList.add('turno');
+            document.querySelector('#jugador1').classList.remove('turno');
         }
         else{
-            document.getElementById('J1').classList.remove('turno');
-            document.getElementById('J2').classList.remove('turno');
+            document.querySelector('#jugador1').classList.remove('turno');
+            document.querySelector('#jugador2').classList.remove('turno');
         }
     }
 
     isClickedFicha(x, y) {       
         for (var i=0; i<this.fichas.length; i++) {
-                var fichaTmp = this.fichas[i];
-            if (fichaTmp.isClicked(x, y) && fichaTmp.getJugador() === this.turno && fichaTmp.getEstado() !== 'inactiva' && !this.juegoFinalizado) {
+                let fichaTmp = this.fichas[i];
+            if (fichaTmp.isClicked(x, y) && fichaTmp.getJugador() === this.turno && fichaTmp.getEstado() !== 'inactiva' && !this.isJuegoFinalizado) {
                 this.fichaActual = fichaTmp;
-                this.fichaClickeada = true;
+                this.isFichaClickeada = true;
                 this.fichas.splice(i,1);     
                 this.posInicialX = this.fichaActual.x;
                 this.posInicialY = this.fichaActual.y;    
@@ -82,7 +83,7 @@ class Juego{
     }
 
     hayFichaClickeada() {
-        return this.fichaClickeada;
+        return this.isFichaClickeada;
     }
 
     moveFicha(x, y) {
@@ -94,7 +95,7 @@ class Juego{
 
     resetFichaClickeada() {
         this.fichaActual = null;
-        this.fichaClickeada = false;
+        this.isFichaClickeada = false;
     }
 
     insertarFicha(x, y){
@@ -102,21 +103,24 @@ class Juego{
         if(this.tablero.pudoInsertarFicha(x, y, this.fichaActual)){
             this.cantidadFichas--;
             if (this.hayGanador()) {
-                var mensajeGanador = document.getElementById('info-ganador');
+                var mensajeGanador = document.querySelector('#info-ganador');
                 if(this.turno === 1)
                     mensajeGanador.innerHTML = 'Ganó el Jugador 1!!!';
                 else
                     mensajeGanador.innerHTML = 'Ganó el Jugador 2!!!';
                 mensajeGanador.classList.remove('oculto');
-                this.juegoFinalizado = true;
+                this.isJuegoFinalizado = true;
             }
             else if(this.cantidadFichas === 0){
-                this.juegoFinalizado = true;
-                var alerta = document.getElementById('info-empate');
+                this.isJuegoFinalizado = true;
+                let alerta = document.querySelector('#info-empate');
                 alerta.classList.remove('oculto');
             }
             else
-                this.turno = (this.turno === 1) ? 2:1;
+                if (this.turno === 1) 
+                this.turno=2
+                else
+                 this.turno=1;
         }
         else{
             this.fichaActual.x = this.posInicialX;
@@ -128,7 +132,7 @@ class Juego{
     }
 
     hayGanador(){
-        var hayGanador = false;
+        let hayGanador = false;
         if(this.tablero.comprobarVertical() || this.tablero.comprobarHorizontal() ||
         this.tablero.comprobarHorizontal() || this.tablero.comprobarDiagonal()) 
             hayGanador = true;
