@@ -7,21 +7,19 @@ class Tablero{
         this.ranurasX = [];
         this.ranurasY = [];
         this.limiteY = 93;
-        this.inicioRanuraGanadora = {'x':-1, 'y':-1};
-        this.finalRanuraGanadora = {'x':-1, 'y':-1};
         this.direccionGanador = '';
         this.cuatroEnLinea = false;
         this.hayGanador = false;
-
-
+        this.inicioRanuraGanadora = {'x':0, 'y':0};
+        this.finalRanuraGanadora = {'x':0, 'y':0};
         this.initRanuras();
     }
 
     initRanuras() {
         let diferenciaX = 95;
-        let diferenciaY = 65;
         let fxInit = 320;
         let fy = 130;
+        let diferenciaY = 65;
         for (let y = 0; y < this.filas; y++) {
             let fx = fxInit;
             this.ranuras[fy+'-fila'] = [];
