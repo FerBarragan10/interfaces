@@ -189,6 +189,101 @@ section img{
       height:23vh;
   }
 
+  /* audio pagina*/
   audio{
       visibility: hidden;
   }
+/* slider*/
+/*
+.contenedor{
+    width:100%;
+    position:relative;
+    top:55vh;
+    height:780px;
+}
+.btn{
+    font-size:30px;
+    height: 70px;
+    width:70px;
+    line-height: 70px;
+    border-radius: 50px;
+    background-color: rgba(0,0,0,.7);
+    text-align:center;
+    font-weight: bolder;
+    position: absolute;
+    color:#fff;
+    box-shadow: 0 0 10px rgba(255,255,255,.6);
+    -webkit-transition:all .3s ease;
+    -o-transition:all .3s ease;
+    transition: all .3s ease;
+}
+.btn:hover{
+    cursor: pointer;
+    transform:scale(1.2,1.2);
+}
+.atras{
+    left:2%;
+    top:50%;
+}
+.siguiente{
+    right:2%;
+    top:50%;
+}*/
+button{
+    font-size:30px;
+    height: 70px;
+    width:70px;
+    line-height: 70px;
+    border-radius: 50px;
+    background-color: rgba(0,0,0,.7);
+    text-align:center;
+    font-weight: bolder;
+    position: absolute;
+    color:#ffe22b;
+    font-family:'harryPotter';
+    box-shadow: 0 0 10px rgba(255,255,255,.6);
+    -webkit-transition:all .3s ease;
+    -o-transition:all .3s ease;
+    transition: all .3s ease;
+}
+.button:hover{
+    cursor: pointer;
+    transform:scale(1.2,1.2);
+}
+.atras{
+    left:2%;
+    top:50%;
+}
+.play{
+    margin-left: -9vw;
+}
+.stop{
+margin-left:9vw;
+}
+.controles{
+    position: relative;
+    margin: auto;
+    top:47vh;
+    text-align: center;
+}
+.siguiente{
+    right:2%;
+    top:50%;
+}
+.carousel {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    position: relative;
+    top:58vh;
+}
+#imagen {
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+}
+.titulo{
+    position: relative;
+    top: 55vh;
+    text-align: center;
+}
