@@ -1,0 +1,194 @@
+@font-face {
+    font-family: 'harryPotter';
+    src: url('font/HARRYP__.TTF');
+}
+body{
+    background:#03121d;
+}
+section{
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+section:before{
+    content:'';
+    position: absolute;
+    bottom:0;
+    width: 100%;
+    height:100px;
+    background:linear-gradient(to top,#03121d,transparent);
+    z-index:10000;
+}
+section:after{
+    content:'';
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height:100%;
+    z-index:10000;
+    mix-blend-mode: color;
+}
+
+
+section img{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    pointer-events:none;
+}
+
+
+/* galery images*/
+
+*{
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+
+.container{
+    width: 20vw;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    position: relative;
+    margin:auto;
+    text-align:center;
+    display: -webkit-inline-box;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 30px;
+  }
+  .container2{
+    width: 40vw;
+    position: relative;
+    top: 54vh;
+    right:20vw;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    display: -webkit-inline-box;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 30px;
+    }
+   
+  .item{
+    background-color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,.095);
+    
+    transition: all 300ms;
+    
+    position: relative;
+  }
+ 
+  
+  .item::after {
+    content: "";
+    background-color: rgba(179, 229, 252, .1);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+    transform: scale(0);
+    transition: all 300ms;
+    opacity: 0;
+  }
+  
+  .item:hover:after{
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .item:hover {
+    transform: scale(1.05);
+    background: #ffe22b;
+  }
+  
+  .item-text{
+    padding: 1em;
+  }
+  
+  
+  .item-img{
+    max-width: 40vh;
+    display: inline-block;
+  }
+.item2{
+    background-color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,.095);
+    
+    transition: all 300ms;
+    
+    position: relative;
+  }
+ 
+  
+  .item2::after {
+    content: "";
+    background-color: rgba(179, 229, 252, .1);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+    transform: scale(0);
+    transition: all 300ms;
+    opacity: 0;
+  }
+  
+  .item2:hover:after{
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .item2:hover {
+    transform: scale(1.05);
+    background: #ffe22b;
+  }
+  
+  .item2-text{
+    padding: 1em;
+  }
+  
+  
+  .item2-img{
+    max-width: 40vh;
+    display: inline-block;
+   
+  }
+
+/* countdown*/
+  .cuentaReg {
+    text-align: center;
+    font-size: 60px;
+    margin-top: 0px;
+    color: #ffe22b;
+    font-family:'harryPotter';
+  }
+  
+  .cuentaRegresiva{
+      background-color: #312626;
+      width: 100%;
+      height:23vh;
+  }
+
+  audio{
+      visibility: hidden;
+  }

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Parallax</title>
+</head>
+<body>
+  <audio controls autoplay>
+    <source src="sound/harrySong.ogg" type="audio/mpeg">
+  </audio>
+  
+    <section>
+      <img src="images/bg.jpg"  id="layer1">
+      <img src="images/moon.png"  id="layer2">
+      <img src="images/nubes.png" id="layer2-2"alt="">
+      <img src="images/hogwarts.png" id="layer3">
+      <img src="images/harryPotterLetra.png" id="text">
+    </section>
+ 
+    <section class="content">
+    Harry Potter es una serie de novelas fantásticas escrita por la autora británica J. K. Rowling, en la que se describen las aventuras del joven aprendiz de magia y hechicería Harry Potter y sus amigos Hermione Granger y Ron Weasley, durante los años que pasan en el Colegio Hogwarts de Magia y Hechicería. El argumento se centra en la lucha entre Harry Potter y el malvado mago lord Voldemort, quien asesinó a los padres de Harry en su afán de conquistar el mundo mágico.
+
+    Desde el lanzamiento de la primera novela, Harry Potter y la piedra filosofal, en 1997, la serie logró una inmensa popularidad, críticas favorables y éxito comercial alrededor del mundo.1​ Para julio de 2013 se habían vendido entre 400 y 450 millones de ejemplares de los siete libros,2​ que los ubican como la serie de libros más vendida de la historia y los cuales han sido traducidos a más de 65 idiomas,3​ entre los que se incluyen el latín4​ y el griego antiguo.5​ El séptimo y último libro, Harry Potter y las reliquias de la Muerte, fue lanzado mundialmente en inglés el 21 de julio de 2007,6​ mientras que en español se publicó el 21 de febrero de 2008.7​
+    
+    La editora Bloomsbury Publishing tiene los derechos de publicación en inglés para el Reino Unido y el resto de Europa, mientras que la editorial Scholastic los tiene para los Estados Unidos y la Editorial Salamandra los tiene para el idioma español y su distribución por España e Hispanoamérica.
+    
+    El éxito de las novelas ha hecho de la marca Harry Potter una de las más exitosas del mundo, con un valor de 15 000 millones de dólares,8​ y a Rowling la primera escritora de la historia en alcanzar los 1 000 millones de dólares en concepto de ganancias gracias a su trabajo.9​ En 2005, fue la novena persona con el ingreso anual más alto del mundo.10​
+    
+    En 1999 la productora de cine Warner Bros. adquirió los derechos para adaptar los siete libros a una serie de películas. La última de ellas, Harry Potter y las reliquias de la Muerte: parte 2, se estrenó el 15 de julio de 2011 y con ocho películas realizadas la serie se convirtió en una de las franquicias más exitosas del cine en concepto de recaudaciones en taquilla.11​
+  </section>
+
+<div class="cuentaRegresiva">
+  <p class="cuentaReg" >Está llegando una nueva aventura para Harry y sus amigos..</p>
+  <p class="cuentaReg" id="countdown"></p>
+</div>
+
+  <div class="grilla" style="text-align: center;position:relative;">
+    <h1 class="cuentaReg" style="position:relative;margin-top: 6vh;text-align: center;">Principales actores de esta pelicula</h1>
+  <div class="container">
+      <div class="item">
+        <img src="images/harry.jpg" alt="" class="item-img">
+        <div class="item-text">
+          <h3>Daniel McRife</h3>
+        <p>Harry Potter</p>
+        </div>
+      </div>
+      
+      <div class="item">
+        <img src="images/ron.jpg" alt="" class="item-img">
+        <div class="item-text">
+          <h3>Rupert Grint</h3>
+          <p>Ron Weasley</p>
+        </div>
+      </div>
+      
+      <div class="item">
+        <img src="images/hermione.png" alt="" class="item-img">
+        <div class="item-text">
+          <h3>Emma Watson</h3>
+          <p>Hermione Granger</p>
+        </div>
+      </div>
+
+    
+  </div>
+  <div class="container2">
+    <div class="item2">
+      <img src="images/hagrid.jpg" alt="" class="item2-img">
+      <div class="item2-text">
+        <h3>Robbie Coltrane</h3>
+        <p>Hagrid</p>
+      </div>
+    </div>
+    
+    
+    <div class="item2">
+      <img src="images/tomRiddle.png" alt="" class="item2-img">
+      <div class="item2-text">
+        <h3>Christian Coulson</h3>
+        <p>Tom Riddle</p>
+      </div>
+    </div>
+    
+    <div class="item2">
+      <img src="images/dracoMalfoy.png" alt="" class="item2-img">
+      <div class="item2-text">
+        <h3>Tom Felton</h3>
+        <p>Draco Malfoy</p>
+      </div>
+    </div>
+  </div>
+ </div>
+</body>
+<script src="parallax.js"></script>
+<script src="countdown.js"></script>
+<script src="sound.js"></script>
+</html>
