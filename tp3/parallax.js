@@ -8,7 +8,7 @@ window.addEventListener("scroll",function(e){
     let value=window.scrollY;
     layer1.style.top= value * 0.5 + 'px';
     layer2.style.left= - value * 0.5 + 'px';
-    layerNube.style.left= value *0.5 +'px';
+    layerNube.style.left= value *0.3 +'px';
     layer3.style.top= - value * 0.15 + 'px';
     text.style.top=value *0.5 + 'px';
 

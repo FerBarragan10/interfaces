@@ -3,7 +3,7 @@
     src: url('font/HARRYP__.TTF');
 }
 body{
-    background:#03121d;
+    background:#010101;
 }
 section{
     position:relative;
@@ -20,7 +20,7 @@ section:before{
     bottom:0;
     width: 100%;
     height:100px;
-    background:linear-gradient(to top,#03121d,transparent);
+    background:linear-gradient(to top,#010101,transparent);
     z-index:10000;
 }
 section:after{
