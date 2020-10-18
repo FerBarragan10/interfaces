@@ -3,14 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="images/icono.png" style="border-radius:50%;">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
-    <title>Parallax</title>
+    <title>Harry Potter</title>
+
+  
 </head>
-<body> 
-  <!--<audio controls autoplay>
-  <source src="sound/harrySong.ogg" type="audio/mpeg">
-</audio>-->  
+<body>
+  <nav>
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <label class="logo">DesignX</label>
+    <ul>
+      <li><a class="active" href="#">Home</a></li>
+      <li><a href="#carousel">Galeria</a></li>
+      <li><a href="#grilla">Elenco</a></li>
+      <li><a href="#contacto">Contáctanos</a></li>
+      <li><a href="#sinopsis">sinopsis</a></li>
+    </ul>
+  </nav>
+  <section class="seccion"></section>
+
+ <!-- <header>
+    <nav>
+      <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <label class="logo">Pottermanía.com</label>
+      <ul>
+        <li><a class="active" href="#">Inicio</a></li>
+        <li><a href="#carousel">Galería</a></li>
+        <li><a href="#grilla">Elenco</a></li>
+        <li><a href="#">Contactanos</a></li>
+        <li><a href="#sinopsis">Sinopsis</a></li>
+      </ul>
+    </nav>
+    <section class="seccion"></section>
+</header> -->
+  
     <section>
       <img src="images/bg.jpg"  id="layer1">
       <img src="images/moon.png"  id="layer2">
@@ -18,25 +55,19 @@
       <img src="images/hogwarts.png" id="layer3">
       <img src="images/harryPotterLetra.png" id="text">
     </section>
- 
-    <section class="content">
-    Harry Potter es una serie de novelas fantásticas escrita por la autora británica J. K. Rowling, en la que se describen las aventuras del joven aprendiz de magia y hechicería Harry Potter y sus amigos Hermione Granger y Ron Weasley, durante los años que pasan en el Colegio Hogwarts de Magia y Hechicería. El argumento se centra en la lucha entre Harry Potter y el malvado mago lord Voldemort, quien asesinó a los padres de Harry en su afán de conquistar el mundo mágico.
-
-    Desde el lanzamiento de la primera novela, Harry Potter y la piedra filosofal, en 1997, la serie logró una inmensa popularidad, críticas favorables y éxito comercial alrededor del mundo.1​ Para julio de 2013 se habían vendido entre 400 y 450 millones de ejemplares de los siete libros,2​ que los ubican como la serie de libros más vendida de la historia y los cuales han sido traducidos a más de 65 idiomas,3​ entre los que se incluyen el latín4​ y el griego antiguo.5​ El séptimo y último libro, Harry Potter y las reliquias de la Muerte, fue lanzado mundialmente en inglés el 21 de julio de 2007,6​ mientras que en español se publicó el 21 de febrero de 2008.7​
-    
-    La editora Bloomsbury Publishing tiene los derechos de publicación en inglés para el Reino Unido y el resto de Europa, mientras que la editorial Scholastic los tiene para los Estados Unidos y la Editorial Salamandra los tiene para el idioma español y su distribución por España e Hispanoamérica.
-    
-    El éxito de las novelas ha hecho de la marca Harry Potter una de las más exitosas del mundo, con un valor de 15 000 millones de dólares,8​ y a Rowling la primera escritora de la historia en alcanzar los 1 000 millones de dólares en concepto de ganancias gracias a su trabajo.9​ En 2005, fue la novena persona con el ingreso anual más alto del mundo.10​
-    
-    En 1999 la productora de cine Warner Bros. adquirió los derechos para adaptar los siete libros a una serie de películas. La última de ellas, Harry Potter y las reliquias de la Muerte: parte 2, se estrenó el 15 de julio de 2011 y con ocho películas realizadas la serie se convirtió en una de las franquicias más exitosas del cine en concepto de recaudaciones en taquilla.11​
-  </section>
 
 <div class="cuentaRegresiva">
   <p class="cuentaReg" >Está llegando una nueva aventura para Harry y sus amigos..</p>
   <p class="cuentaReg" id="countdown"></p>
 </div>
 
-  <div class="grilla" style="text-align: center;position:relative;">
+<div id="sinopsis">
+<h1 style="color: rgb(236, 199, 103);text-align: center;">Sinopsis</h1>
+  <p id="sinopsis">Tras derrotar una vez más a lord Voldemort, su siniestro enemigo en Harry Potter y la piedra filosofal, Harry espera impaciente en casa de sus insoportables tíos el inicio del segundo curso del Colegio Hogwarts de Magia. Sin embargo, la espera dura poco, pues un elfo aparece en su habitación y le advierte que una amenaza mortal se cierne sobre la escuela. Así pues, Harry no se lo piensa dos veces y, acompañado de Ron, su mejor amigo, se dirige a Hogwarts en un coche volador. Pero ¿puede un aprendiz de mago defender la escuela de los malvados que pretenden destruirla? Sin saber que alguien había abierto la Cámara de los Secretos, dejando escapar una serie de monstruos peligrosos, Harry y sus amigos Ron y Hermione tendrán que enfrentarse con arañas gigantes, serpientes encantadas, fantasmas enfurecidos y, sobre todo, con la mismísima reencarnación de su más temible adversario.
+  </p>
+ 
+</div>
+  <div id="grilla" style="text-align: center;position:relative;">
     <h1 class="cuentaReg" style="position:relative;margin-top: 6vh;text-align: center;">Principales actores de esta pelicula</h1>
   <div class="container">
       <div class="item">
@@ -96,21 +127,49 @@
   <p class="cuentaReg">Algunas escenas de la pelicula</p>
 
 </div>
-<div class="carousel">
-  <button class="atras" id="retroceder">&#60</button>
-  <div id="imagen"></div>
-  <button class="siguiente" id="avanzar">  &#62 </button>
+  <div id="carousel">
+    <button class="atras" id="retroceder">&#60</button>
+    <div id="imagen"></div>
+    <button class="siguiente" id="avanzar">  &#62 </button>
+  </div>
+  <div class="controles">
+    <button class="play" id="play">Play</button>
+    <button class="stop"  id="stop" disabled>Stop</button>
+  </div>
+  
+
+
+<audio controls autoplay>
+  <source src="sound/harrySong.ogg" type="audio/mpeg">
+</audio>
+
+color: red;
+  
+   
+<div style="color:rgb(236, 199, 103);  position: relative;top: 68vh; text-align: center;font-family: 'harryPotter';font-size: 36px;">
+  <h1>Contactanos</h1>
 </div>
-<div class="controles">
-  <button class="play" id="play">Play</button>
-  <button class="stop"  id="stop" disabled>Stop</button>
+<div class="wrapper"id="contacto"> 
+  <form action="#" method="post">
+    <div class="field">
+      <input type="text" id="name" name="name" placeholder="ingrese su nombre" />
+      <label for="name">Nombre</label>
+    </div>
+    <div class="field">
+      <input type="text" id="email" name="email" placeholder="example@gmail.com" />
+      <label for="email">E-Mail</label>
+    </div>
+    <div class="field">
+      <textarea id="msg" rows="4" name="msg" placeholder="deje su mensaje..."></textarea>
+      <label for="msg">Mensaje</label>
+    </div>
+    <input class="button" type="submit" value="Enviar" />
+  </form>
+
 </div>
-
-
-
-
 </body>
 <script src="parallax.js"></script>
 <script src="countdown.js"></script>
 <script src="slider.js"></script>
+<script src="formulario.js"></script>
 </html>
