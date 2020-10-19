@@ -14,39 +14,23 @@
   
 </head>
 <body>
+  <div class="lds-ring loader" id="loader"><div></div><div></div></div>
   <nav>
     <input type="checkbox" id="check">
     <label for="check" class="checkbtn">
       <i class="fas fa-bars"></i>
     </label>
-    <label class="logo">DesignX</label>
+    <i class="fas fa-bolt"></i>
+    <label class="logo">POTTERMANIA.COM</label>
     <ul>
       <li><a class="active" href="#">Home</a></li>
-      <li><a href="#carousel">Galeria</a></li>
+      <li><a href="#titulo">Galeria</a></li>
       <li><a href="#grilla">Elenco</a></li>
       <li><a href="#contacto">Contáctanos</a></li>
       <li><a href="#sinopsis">sinopsis</a></li>
     </ul>
   </nav>
   <section class="seccion"></section>
-
- <!-- <header>
-    <nav>
-      <input type="checkbox" id="check">
-      <label for="check" class="checkbtn">
-        <i class="fas fa-bars"></i>
-      </label>
-      <label class="logo">Pottermanía.com</label>
-      <ul>
-        <li><a class="active" href="#">Inicio</a></li>
-        <li><a href="#carousel">Galería</a></li>
-        <li><a href="#grilla">Elenco</a></li>
-        <li><a href="#">Contactanos</a></li>
-        <li><a href="#sinopsis">Sinopsis</a></li>
-      </ul>
-    </nav>
-    <section class="seccion"></section>
-</header> -->
   
     <section>
       <img src="images/bg.jpg"  id="layer1">
@@ -123,9 +107,10 @@
     </div>
   </div>
  </div>
-<div class="titulo">
+ <div id="titulo"class="titulo">
+   <img src="images/rolloCine.png" class="img-animated-right slide-fwd-left">
+   <img src="images/popcorn.png" class="img-animated-left slide-top" alt="">
   <p class="cuentaReg">Algunas escenas de la pelicula</p>
-
 </div>
   <div id="carousel">
     <button class="atras" id="retroceder">&#60</button>
@@ -150,20 +135,23 @@ color: red;
   <h1>Contactanos</h1>
 </div>
 <div class="wrapper"id="contacto"> 
-  <form action="#" method="post">
-    <div class="field">
-      <input type="text" id="name" name="name" placeholder="ingrese su nombre" />
+  <form action="#" id="form" method="post">
+    <div class="form-control">
+      <input type="text" id="nombre" class="form__validate form__validate--focused" name="name" placeholder="ingrese su nombre" required/>
       <label for="name">Nombre</label>
+     
     </div>
-    <div class="field">
-      <input type="text" id="email" name="email" placeholder="example@gmail.com" />
+    <div class="form-control">
+      <input type="email" id="email" name="email"  class="form__validate form__validate--focused" placeholder="example@gmail.com" required />
       <label for="email">E-Mail</label>
     </div>
-    <div class="field">
-      <textarea id="msg" rows="4" name="msg" placeholder="deje su mensaje..."></textarea>
+    <div class="form-control">
+      <textarea id="msg" rows="4" name="msg" class="form__validate form__validate--focused" placeholder="deje su mensaje..." required></textarea>
       <label for="msg">Mensaje</label>
     </div>
-    <input class="button" type="submit" value="Enviar" />
+    <div style="position: relative;text-align: center;">
+      <input class="button" type="submit" value="Enviar" />
+    </div>
   </form>
 
 </div>
@@ -172,4 +160,6 @@ color: red;
 <script src="countdown.js"></script>
 <script src="slider.js"></script>
 <script src="formulario.js"></script>
+<script src="spinner.js"></script>
+
 </html>

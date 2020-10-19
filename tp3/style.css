@@ -207,6 +207,7 @@ button{
     width:70px;
     line-height: 70px;
     border-radius: 50px;
+    border: 1px solid;
     background-color: rgba(0,0,0,.7);
     text-align:center;
     font-weight: bolder;
@@ -389,13 +390,13 @@ form * {
   text-decoration: none;
 }
 
-form .field {
+form .form-control {
   width: 100%;
   position: relative;
   margin-bottom: 15px;
 }
 
-form .field label {
+form .form-control label {
   position: absolute;
   top: 0;
   left: 0;
@@ -407,8 +408,9 @@ form .field label {
   padding: 18px 0;
 }
 
-form .field input[type="text"],
-form .field textarea {
+form .form-control input[type="text"],
+form .form-control input[type="email"],
+form .form-control textarea {
   border: none;
   width: 100%;
   height: 64px;
@@ -429,12 +431,16 @@ form textarea:not(:placeholder-shown)#msg {
 }
 form input[type="text"]:focus + label,
 form input[type="text"]:not(:placeholder-shown) + label,
+form input[type="email"]:focus + label,
+form input[type="email"]:not(:placeholder-shown) + label,
+
 form textarea:focus + label,
 form textarea:not(:placeholder-shown) + label,
-form .field:hover label {
+form .form-control:hover label {
   width: 18%;
 }
 form input[type="submit"] {
+  
   background: darkgoldenrod;
   -webkit-appearance: none;
   border: none;
@@ -446,3 +452,105 @@ form input[type="submit"]:hover,
 form input[type="submit"]:focus {
   background: #dbd18f;  
 }
+
+
+.form__validate {
+  background-size: 48px;
+  background-position: right 5px center;
+  background-repeat: no-repeat;
+}
+
+.form__validate--focused:focus:invalid {
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/5144/ios7-close-empty.svg");
+}
+
+.form__validate--focused:focus:valid {
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/5144/ios7-checkmark-empty.svg");
+}
+
+.form__validate--blurred:not(:focus):invalid {
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/5144/ios7-close-empty.svg");
+}
+
+.form__validate--blurred:not(:focus):valid {
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/5144/ios7-checkmark-empty.svg");
+}
+
+
+/*animated button*/
+
+
+
+/*spinner preload*/
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader{
+  background:#010101;
+  width:100%;
+  height:100vh;
+  display:flex;
+  text-align:center;
+  justify-content: center;
+  align-items: center;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:100000;
+  clip-path:(150% at 100% 0);
+}
+.loader2{
+  clip-path:circle(0% at 100% 0);
+}
+
+/*animated images*/
+.img-animated-right{
+  position: relative;
+  left: 46vw;
+  z-index:13;
+  top: 53vh;
+}
+.img-animated-left{
+  position:relative;
+  top:64vh;
+  right:50vw;
+}
+.slide-top{-webkit-animation:slide-top 1s cubic-bezier(.25,.46,.45,.94) infinite alternate both;animation:slide-top 2s cubic-bezier(.25,.46,.45,.94) infinite alternate both}
+@-webkit-keyframes slide-top{0%{-webkit-transform:translateY(0);transform:translateY(0)}100%{-webkit-transform:translateY(-100px);transform:translateY(-100px)}}@keyframes slide-top{0%{-webkit-transform:translateY(0);transform:translateY(0)}100%{-webkit-transform:translateY(-100px);transform:translateY(-100px)}}
+
+
+.slide-fwd-left{-webkit-animation:slide-fwd-left 3s linear 2s infinite both;animation:slide-fwd-left 3s linear 2s infinite both}
+@-webkit-keyframes slide-fwd-left{0%{-webkit-transform:translateZ(0) translateX(0);transform:translateZ(0) translateX(0)}100%{-webkit-transform:translateZ(160px) translateX(-100px);transform:translateZ(160px) translateX(-100px)}}@keyframes slide-fwd-left{0%{-webkit-transform:translateZ(0) translateX(0);transform:translateZ(0) translateX(0)}100%{-webkit-transform:translateZ(160px) translateX(-100px);transform:translateZ(160px) translateX(-100px)}}
