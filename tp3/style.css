@@ -356,7 +356,7 @@ a.active,a:hover{
   }
   a:hover,a.active{
     background: none;
-    color: #0082e6;
+    color: darkgoldenrod;
   }
   #check:checked ~ ul{
     left: 0;
@@ -572,3 +572,112 @@ form input[type="submit"]:focus {
 
 .slide-fwd-left{-webkit-animation:slide-fwd-left 3s linear 2s infinite both;animation:slide-fwd-left 3s linear 2s infinite both}
 @-webkit-keyframes slide-fwd-left{0%{-webkit-transform:translateZ(0) translateX(0);transform:translateZ(0) translateX(0)}100%{-webkit-transform:translateZ(160px) translateX(-100px);transform:translateZ(160px) translateX(-100px)}}@keyframes slide-fwd-left{0%{-webkit-transform:translateZ(0) translateX(0);transform:translateZ(0) translateX(0)}100%{-webkit-transform:translateZ(160px) translateX(-100px);transform:translateZ(160px) translateX(-100px)}}
+
+
+/*accordion*/
+
+
+.accordionWrapper p{
+  color:#ffe22b;
+  font-size: 28px;
+  text-align: center;
+  font-family: 'harryPotter';
+}
+
+.accordionWrapper{
+  padding:30px;
+  background:transparent; 
+  position: relative;
+  top: 55vh;
+  float:left;
+  width:80%;
+  box-sizing:border-box;
+  margin:10%; 
+  box-shadow: 0 1.5em 85px 0 rgba(0, 0, 0, 0.2);
+}
+.accordionItem{
+  float:left;
+  position: relative;
+  top: 55vh;
+  display:block;
+  width:100%;
+  box-sizing: border-box;
+  font-family:'Open-sans',Arial,sans-serif;
+}
+.accordionItemHeading{
+  cursor:pointer;
+  margin:0px 0px 10px 0px;
+  padding:10px;
+  background:darkgoldenrod;
+  color:#010101;
+ font-family: 'harryPotter';
+ font-size:36px;
+  text-align: center;
+  width:100%;
+  -webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+      box-sizing: border-box;
+}
+.accordionItemHeading:hover{
+  background-color:rgb(238, 180, 32);
+}
+.close .accordionItemContent{
+  height:0px;
+  transition:height 1s ease-out;
+  -webkit-transform: scaleY(0);
+-o-transform: scaleY(0);
+-ms-transform: scaleY(0);
+transform: scaleY(0);
+  float:left;
+  text-transform: uppercase;
+
+  display:block;
+  
+  
+}
+.open .accordionItemContent{
+      padding: 20px;
+  background-color: #010101;
+  border:2px solid darkgoldenrod;
+  width: 100%;
+  margin: 0px 0px 10px 0px;
+  display:block;
+  -webkit-transform: scaleY(1);
+-o-transform: scaleY(1);
+-ms-transform: scaleY(1);
+transform: scaleY(1);
+  -webkit-transform-origin: top;
+-o-transform-origin: top;
+-ms-transform-origin: top;
+transform-origin: top;
+
+-webkit-transition: -webkit-transform 0.4s ease-out;
+-o-transition: -o-transform 0.4s ease;
+-ms-transition: -ms-transform 0.4s ease;
+transition: transform 0.4s ease;
+      box-sizing: border-box;
+}
+
+.open .accordionItemHeading{
+  margin:0px;
+      -webkit-border-top-left-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-topright: 3px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+  -moz-border-radius-bottomright: 0px;
+  -moz-border-radius-bottomleft: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  background-color:darkgoldenrod;
+  color: #010101;
+}
+.escudo{
+  position: relative;
+    display: block;
+    margin: auto;
+}
