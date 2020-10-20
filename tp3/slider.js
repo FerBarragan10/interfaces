@@ -12,7 +12,7 @@ window.onload = function () {
         'images/scenas/diarioTomRidle.png',
         'images/scenas/camara-secreta.png',
         'images/scenas/basilisco.jpg',
-        'images/scenas/harryderrota.png',
+        'images/scenas/Harryderrota.png',
         'images/scenas/tomRiddleMuere.png',
         'images/scenas/dumbledore.png',
         'images/scenas/dobbyLibre.png',
