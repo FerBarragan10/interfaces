@@ -30,7 +30,7 @@ section:after{
     left:0;
     width: 100%;
     height:100%;
-    z-index:10000;
+    /*z-index:10000;*/
     mix-blend-mode: color;
 }
 
@@ -303,6 +303,7 @@ nav ul li a{
   font-size: 17px;
   padding: 7px 13px;
   border-radius: 3px;
+  z-index:10000;
   text-transform: uppercase;
 }
 a.active,a:hover{
