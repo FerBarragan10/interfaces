@@ -407,6 +407,8 @@ form .form-control label {
   left: 0;
   background: darkgoldenrod;
   width: 100%;
+  font-family:fantasy;
+  font-weight: bolder;
   height: 64px;
   transition: width 333ms ease-in-out;
   text-align: center;
@@ -450,6 +452,7 @@ form input[type="submit"] {
   -webkit-appearance: none;
   border: none;
   position: relative;
+  font-family: fantasy;
   padding: 13px 50px;
   transition: all 0.3s ease-in-out;
 }
@@ -610,7 +613,8 @@ form input[type="submit"]:focus {
   padding:10px;
   background:darkgoldenrod;
   color:#010101;
- font-family: 'harryPotter';
+ font-family: fantasy;
+ text-transform: uppercase;
  font-size:36px;
   text-align: center;
   width:100%;
