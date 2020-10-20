@@ -3,9 +3,13 @@ window.onload = function () {
     // Variables
     const IMAGENES = [
         'images/scenas/tapa.jpg',
-        'images/scenas/dobby.jpg',
+        'images/scenas/autovolador.png',
+        'images/scenas/duelo.png',
         'images/scenas/grafitis.jpg',
+        'images/scenas/quidicth.png',
         'images/scenas/escenaAragog.jpg',
+        'images/scenas/diarioTomRidle.png',
+        'images/scenas/camara-secreta.jpg',
         'images/scenas/basilisco.jpg',
     ];
     const TIEMPO_INTERVALO_MILESIMAS_SEG = 3000;
