@@ -3,14 +3,21 @@ window.onload = function () {
     // Variables
     const IMAGENES = [
         'images/scenas/tapa.jpg',
+        'images/scenas/dobby.png',
         'images/scenas/autovolador.png',
         'images/scenas/duelo.png',
         'images/scenas/grafitis.jpg',
         'images/scenas/quidicth.png',
         'images/scenas/escenaAragog.jpg',
         'images/scenas/diarioTomRidle.png',
-        'images/scenas/camara-secreta.jpg',
+        'images/scenas/camara-secreta.png',
         'images/scenas/basilisco.jpg',
+        'images/scenas/harryderrota.png',
+        'images/scenas/tomRiddleMuere.png',
+        'images/scenas/dumbledore.png',
+        'images/scenas/dobbyLibre.png',
+
+
     ];
     const TIEMPO_INTERVALO_MILESIMAS_SEG = 3000;
     let posicionActual = 0;
